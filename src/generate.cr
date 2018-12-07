@@ -148,7 +148,6 @@ class Application
     data = generate_repo_data(data)
     data = join(data)
     data = split(data)
-    data = filter_and_sanitize(data)
     data = sort(data)
     data = join_lines(data)
 
@@ -175,14 +174,6 @@ class Application
 
   protected def split(data)
     message("Splitting by line", indent: 1) { data.lines }
-  end
-
-  protected def filter_and_sanitize(data)
-    message("Filtering/sanitizing lines", indent: 1) do
-      data.each_with_object([] of String) do |line, lines|
-        lines << line.sub("Scott ", "") if line =~ /Lewis/
-      end
-    end
   end
 
   protected def sort(data)
